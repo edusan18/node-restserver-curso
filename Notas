@@ -1,0 +1,118 @@
+Para ejecutar en el levantar el node con lo siguientes archivos, usar el comando:
+
+D:\EC\Mis Documentos\Cursos\Node JS - Udemy\Node\07-restserver>nodemon server/03_server.js
+
+
+Server/01_server.js
+----------------------------
+
+Ejercicio Uno haciendo un servicio GET, ejecutar en el cmd:
+
+nodemon server/01_server
+
+a) Luego verificar con el Postman, el metodo get a esta dirección:
+
+    http://localhost:3000
+
+    nos devolverá el "Hello Word" en formato json
+
+
+Server/02_server.js
+----------------------------
+Implementaremos mas metodos
+
+POST -> cREAR Nuevos Registros
+PUT -> MODIFICA REGISTROS, PUT Y PATCH SON CONVENCIONES QUE HACEN LO MISMO
+
+a) Luego verificar con el Postman, el metodo get a esta dirección:
+    http://localhost:3000
+    recibiremos el "get Usuario" en formato json
+
+b) Luego verificar con el Postman, el metodo put a esta dirección:
+    http://localhost:3000
+    recibiremos el "put Usuario" en formato json
+
+c) Luego verificar con el Postman, el metodo post a esta dirección:
+    http://localhost:3000
+    recibiremos el "post Usuario" en formato json
+
+d) Luego verificar con el Postman, el metodo delete a esta dirección:
+    http://localhost:3000
+    recibiremos el "delete Usuario" en formato json
+
+Server/03_server.js
+----------------------------
+Aqui empezaremos a enviar parámetros dentro de la url en cada llamada mediante el siguiente mecanismo
+
+
+a) Luego verificar con el Postman, el metodo put a esta dirección:
+
+    http://localhost:3000/usuario/ecorrea
+
+    recibiremos en formato json:
+    {
+    "id": "ecorrea"
+    }
+
+Server/04_server.js
+----------------------------
+Aqui empezaremos a enviar parametros dentro del contenido del request.
+Decargaremos de google el npm bodyparser
+instalamos el bodyparser escribiendo el comando npm install body-parser --save 
+
+Agregaremos las siguientes lineas de codigo, que se ejecutaran en cada llamado, estas se encargan de serializar 
+en json cualquier parametro json:
+
+    // parse application/x-www-form-urlencoded
+    app.use(bodyParser.urlencoded({ extended: false })) // Son funciones que se ejecutaran en cada peticion que nosotros hagamos
+    
+    // parse application/json
+    app.use(bodyParser.json()) // Son funciones que se ejecutaran en cada peticion que nosotros hagamos
+    
+Modificamos el metodo post
+
+
+a) Luego verificar con el Postman, el metodo post a esta dirección:
+    http://localhost:3000/
+    en el tab body, con opcion x-www-form-urlencoded escribimos los parametros que queremos:
+    nombre, edad y correo, y nos dara el siguiente resultado en formato json:
+
+    {
+    "persona": {
+        "nombre": "Eduardo",
+        "edad": "34",
+        "correo": "eduarcoa18@gmail.com"
+        }
+    }
+
+Server/05_server.js
+----------------------------
+a) Luego verificar con el Postman, el metodo post a esta dirección:
+
+http://localhost:3000/
+
+Aqui empezaremos a usar codigos de respuesta, si no enviamos el nombre como parametro de request el postman nos devolvera
+el error 400 con un json de este tipo:
+
+{
+    "ok": false,
+    "mensaje": "El nombre es necesario"
+}
+
+
+Server/06_server.js
+----------------------------
+Empezaremos a trabajar con archivos de configuracion
+Creamos la carpeta config, dentro de ella el archivo config.js
+El process es un funcion que siempre esta corriendo con node en la aplicacion
+Llamamos al config desde el archivo con este required: require('./config/config');
+
+
+a) Levantamos el node y ahora leera el puerto 3001
+
+process.env.PORT
+
+
+
+
+
